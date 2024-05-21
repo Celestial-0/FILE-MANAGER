@@ -1,15 +1,84 @@
-# File Automation
+# File Manager Application 📂📄📈
 
-This project automatically sorts and moves files according to their type. The project uses the flet library to create a GUI for the file automation.
+## Overview
 
-It uses the flet library to create a GUI for the file automation.
-It automatically sorts and moves files according to their type.
-The types of files are: documents, images, videos, and executables.
+This is a Python-based file management application developed using the Flet framework. The application allows users to organize files in a specified directory into categorized folders based on their file extensions. It also provides functionalities to add custom folders with specific file extensions, create backups before organizing, and generate a summary of the file types and their sizes.
+
+## Features
+
+- **Select Source Directory**: Choose the directory containing the files to be organized.
+- **Default Folder Categories**: Predefined categories for Music, Photos, Documents, and Videos.
+- **Add Custom Folders**: Add custom folders with specific file extensions.
+- **Organize Files**: Move files to appropriate folders based on their extensions.
+- **Backup Functionality**: Create a backup of the source directory before organizing.
+- **Summary Report**: Generate and display a summary of file types and their sizes.
+- **Plot Summary**: Visual representation of the summary report using a bar chart.
 
 ## Requirements
 
-- Python 3.6 or higher
+The application requires the following Python packages:
+
 - flet==0.22.1
 - matplotlib==3.9.0
 - numpy==1.26.4
 - pytest==8.2.1
+
+To install these packages, use the following command:
+
+```bash
+pip install -r requirements.txt
+```
+
+## Usage
+
+1. **Running the Application**:
+   To start the application, execute the `main.py` script:
+
+   ```bash
+   python main.py
+   ```
+
+2. **User Interface**:
+   - **Source Directory**: Select the source directory using the "Select Source Directory" button.
+   - **Default Folders**: The application includes default folder names for Music, Photos, Documents, and Videos. These can be customized.
+   - **Custom Folders**: Add custom folders by specifying the folder name and associated file extensions.
+   - **Organize Files**: Click the "Organize Files" button to start organizing files. The application will create a backup, organize files, and display a summary report.
+   - **Summary and Plot**: The summary report is displayed in a text field, and a bar chart representing the summary is shown in an image field.
+
+3. **Logs**:
+   - The application logs its activities in a log file named `file_manager.log`.
+
+## Code Structure
+
+- **main.py**: Contains the main application code including the user interface and file organization logic.
+- **requirements.txt**: Lists the required Python packages.
+
+## Key Functions
+
+- **`FileManagerApp.__init__(self, page: ft.Page)`**: Initializes the application with UI components and default settings.
+- **`FileManagerApp.init_ui(self)`**: Sets up the user interface components.
+- **`FileManagerApp.get_folders(self)`**: Retrieves the folder names and associated file extensions.
+- **`FileManagerApp.create_dirs(self, base_dir, folders)`**: Creates necessary directories for organizing files.
+- **`FileManagerApp.move_file(self, file, base_dir, folders)`**: Moves a file to the appropriate folder.
+- **`FileManagerApp.organize_files(self, src_dir, folders)`**: Organizes files in the source directory.
+- **`FileManagerApp.backup_files(self, src_dir)`**: Creates a backup of the source directory.
+- **`FileManagerApp.summarize_files(self, src_dir)`**: Summarizes the file types and their sizes in the source directory.
+- **`FileManagerApp.format_summary(self, file_sizes)`**: Formats the summary of file sizes for display.
+- **`FileManagerApp.plot_summary(self, file_sizes)`**: Generates a bar chart of the file sizes summary.
+- **`FileManagerApp.on_pick_src_click(self, e)`**: Callback for selecting the source directory.
+- **`FileManagerApp.on_add_custom_click(self, e)`**: Callback for adding a custom folder.
+- **`FileManagerApp.on_organize_click(self, e)`**: Callback for organizing files.
+- **`FileManagerApp.on_pick_result(self, result: ft.FilePickerResultEvent)`**: Callback for handling the result of directory selection.
+- **`FileManagerApp.show_error_dialog(self, message)`**: Displays an error dialog with the specified message.
+
+## Author
+
+Developed by YASH
+
+## License
+
+This project is licensed under the MIT License.
+
+---
+
+Feel free to explore and modify the application as per your requirements. If you encounter any issues or have suggestions for improvements, please create an issue or submit a pull request on the project's repository.

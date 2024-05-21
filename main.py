@@ -6,14 +6,16 @@ import flet as ft
 import matplotlib.pyplot as plt
 import numpy as np
 
-from config import DEFAULT_FOLDERS 
+from config import DEFAULT_FOLDERS
 
 logging.basicConfig(filename='file_manager.log', level=logging.INFO)
 
 plt.switch_backend('Agg')
 
+
 class FileManagerApp:
     """A file management application."""
+    
     def __init__(self, page: ft.Page):
         """
         Initializes the FileManagerApp.
@@ -21,7 +23,6 @@ class FileManagerApp:
         Args:
             page (ft.Page): The Flet page to display the application.
         """
-        
         self.page = page
         self.page.title = "File Manager"
         self.page.window_width = 1280
@@ -30,6 +31,18 @@ class FileManagerApp:
         self.page.window_min_height = 760
         self.page.window_resizable = True
         self.page.window_icon = "./assets/icon1.png"
+
+        self.init_ui()
+
+        self.custom_folders = []
+
+        # Initialize FilePicker
+        self.file_picker = ft.FilePicker(on_result=self.on_pick_result)
+        self.page.overlay.append(self.file_picker)
+        self.page.update()
+
+    def init_ui(self):
+        """Initializes the UI components."""
         self.src_dir_input = ft.TextField(label="Source Directory", width=300, read_only=True)
         self.pick_src_button = ft.ElevatedButton(
             text="Select Source Directory",
@@ -53,8 +66,6 @@ class FileManagerApp:
         )
 
         self.custom_list = ft.Column()
-        self.custom_folders = []
-
         self.organize_button = ft.ElevatedButton(
             text="Organize Files",
             on_click=self.on_organize_click,
@@ -72,7 +83,6 @@ class FileManagerApp:
         self.progress_bar.visible = False
         
         self.plot_image = ft.Image(width=600, height=400, src="Nothing", fit=ft.ImageFit.CONTAIN)
-        
         self.author_mark = ft.Text("Developed by YASH", size=12, color=ft.colors.GREY)
         self.author_row = ft.Row([self.author_mark], alignment=ft.MainAxisAlignment.CENTER)
 
@@ -93,7 +103,7 @@ class FileManagerApp:
                         self.add_custom_button,
                         self.custom_list,
                         ft.Divider(),
-                    ],scroll=ft.ScrollMode.ALWAYS),
+                    ], scroll=ft.ScrollMode.ALWAYS),
                     self.plot_image,
                     ft.Column([
                         self.organize_button,
@@ -102,26 +112,15 @@ class FileManagerApp:
                     ]),
                 ], scroll=ft.ScrollMode.ALWAYS),
                 self.author_row,
-            ],scroll=ft.ScrollMode.ALWAYS, alignment=ft.MainAxisAlignment.CENTER)
+            ], scroll=ft.ScrollMode.ALWAYS, alignment=ft.MainAxisAlignment.CENTER)
         )
-
-        # Initialize FilePicker
-        self.file_picker = ft.FilePicker(on_result=self.on_pick_result)
-        self.page.overlay.append(self.file_picker)
-        self.page.update()
 
     def get_folders(self):
         """Retrieve folder names for each file type."""
-        folders = {}
-        custom_folders = {
-            "Music": self.music_input.value,
-            "Photos": self.photos_input.value,
-            "Documents": self.docs_input.value,
-            "Videos": self.videos_input.value
-        }
-        for folder, exts in DEFAULT_FOLDERS.items():
-            custom_name = custom_folders.get(folder, folder)
-            folders[custom_name if custom_name else folder] = exts
+        folders = {self.music_input.value: DEFAULT_FOLDERS['Music'],
+                   self.photos_input.value: DEFAULT_FOLDERS['Photos'],
+                   self.docs_input.value: DEFAULT_FOLDERS['Docs'],
+                   self.videos_input.value: DEFAULT_FOLDERS['Videos']}
         for folder_name, folder_exts in self.custom_folders:
             folders[folder_name] = folder_exts
         folders["Others"] = []
@@ -236,12 +235,10 @@ class FileManagerApp:
 
     def on_pick_src_click(self, e):
         """Callback for selecting the source directory."""
-        
         self.file_picker.get_directory_path()
 
     def on_add_custom_click(self, e):
         """Callback for adding a custom folder."""
-        
         folder_name = self.custom_folder_input.value
         folder_exts = [ext.strip().lower() for ext in self.custom_exts_input.value.split(',')]
         if folder_name and folder_exts:
@@ -261,7 +258,6 @@ class FileManagerApp:
 
     def on_organize_click(self, e):
         """Callback for organizing files."""
-        
         src_dir = self.src_dir_input.value
         if os.path.isdir(src_dir):
             folders = self.get_folders()
@@ -291,7 +287,6 @@ class FileManagerApp:
 
     def on_pick_result(self, result: ft.FilePickerResultEvent) -> None:
         """Callback for picking a directory using FilePicker."""
-        
         if result and result.path:
             if os.path.isdir(result.path):
                 self.src_dir_input.value = result.path
@@ -310,10 +305,11 @@ class FileManagerApp:
         self.page.dialog.open = True
         self.page.update()
 
+
 def main(page: ft.Page):
     """Main function to start the application."""
-    
     FileManagerApp(page)
 
-if __name__ == "__main__" :
+
+if __name__ == "__main__":
     ft.app(target=main)

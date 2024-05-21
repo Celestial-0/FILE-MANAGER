@@ -1,3 +1,4 @@
+# test_main.py
 import os
 import pytest
 from unittest import mock
@@ -17,10 +18,13 @@ def app():
 
 def test_get_folders(app):
     # Default folders plus custom folders
-    expected_folders = DEFAULT_FOLDERS.copy()
-    expected_folders.update({
+    expected_folders = {
+        app.music_input.value: DEFAULT_FOLDERS.get('Music', []),
+        app.photos_input.value: DEFAULT_FOLDERS.get('Photos', []),
+        app.docs_input.value: DEFAULT_FOLDERS.get('Docs', []),
+        app.videos_input.value: DEFAULT_FOLDERS.get('Videos', []),
         "Others": []
-    })
+    }
     assert app.get_folders() == expected_folders
 
 def test_create_dirs(tmpdir, app):
