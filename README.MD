@@ -22,6 +22,7 @@ The application requires the following Python packages:
 - matplotlib==3.9.0
 - numpy==1.26.4
 - pytest==8.2.1
+- darkdetect==0.8.0
 
 To install these packages, use the following command:
 
@@ -47,6 +48,28 @@ pip install -r requirements.txt
 
 3. **Logs**:
    - The application logs its activities in a log file named `file_manager.log`.
+
+## Screenshot of the File Manager Application
+
+![Screenshot of the application](./assets/ss/Screenshot%202024-05-22%20071713.png)
+
+## Example UseCases
+
+- **Test Folder**
+
+![Test Folder](./assets/ss/Screenshot%202024-05-22%20071820.png)
+
+- **App after Initiated**
+
+![Result(App)](./assets/ss/Screenshot%202024-05-22%20071902.png)
+
+- **Result App Folder**
+
+![Result(Folder(Test))](./assets/ss/Screenshot%202024-05-22%20071908.png)
+
+- **Log File**
+
+[Log File](./assets/ss/file_manager.log)
 
 ## Code Structure
 

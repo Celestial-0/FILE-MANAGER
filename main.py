@@ -5,10 +5,11 @@ from datetime import datetime
 import flet as ft
 import matplotlib.pyplot as plt
 import numpy as np
+from darkdetect import isDark
 
 from config import DEFAULT_FOLDERS
 
-logging.basicConfig(filename='file_manager.log', level=logging.INFO)
+logging.basicConfig(filename='./assets/file_manager.log', level=logging.INFO)
 
 plt.switch_backend('Agg')
 
@@ -205,33 +206,53 @@ class FileManagerApp:
             formatted_summary += f"{ext.upper()[1:]}: {size:.1f}MB\n"
         return formatted_summary
 
-    def plot_summary(self, file_sizes):
-        """Plot the summary of file sizes and save it as an image file."""
+
+    def plot_summary(self, file_sizes, dark_mode=isDark(), plot_file="./assets/plot_summary.png"):
+        """
+        Plot the summary of file sizes and save it as an image file.
+
+        Parameters:
+        - file_sizes: dict, a dictionary with file extensions as keys and their sizes as values.
+        - dark_mode: bool, whether to use dark mode for the plot.
+        - plot_file: str, the name of the file where the plot will be saved.
+
+        Returns:
+        - plot_file: str, the path to the saved plot image.
+        """
+        if not file_sizes:
+            raise ValueError("file_sizes dictionary is empty")
+
         extensions = list(file_sizes.keys())
         sizes = list(file_sizes.values())
         colors = plt.cm.tab20c(np.linspace(0, 1, len(extensions)))
 
-        fig, ax = plt.subplots(facecolor='black')
-        bars = ax.bar(extensions, sizes, color=colors)
+        fig, ax = plt.subplots(facecolor='black' if dark_mode else 'white')
+        patches, texts, autotexts = ax.pie(sizes, labels=extensions, colors=colors, autopct='%1.1f%%', startangle=140)
 
-        ax.set_facecolor('black')
-        ax.tick_params(axis='x', colors='white')
-        ax.tick_params(axis='y', colors='white')
-        ax.set_xlabel("File Types", color='white')
-        ax.set_ylabel("Size (MB)", color='white')
-        ax.set_title("File Sizes by Type", color='white')
+        # Setting text color based on dark mode
+        label_color = 'white' if dark_mode else 'black'
+        for text in texts:
+            text.set_color(label_color)
+        for autotext in autotexts:
+            autotext.set_color(label_color)
 
-        for bar in bars:
-            yval = bar.get_height()
-            ax.text(bar.get_x() + bar.get_width() / 2, yval + 0.1, f'{yval:.1f}MB', ha='center', color='white')
+        ax.set_facecolor('black' if dark_mode else 'white')
+        ax.set_title("File Sizes by Type", color=label_color, fontweight='bold')
+
+        # Calculate total storage consumed
+        total_storage = sum(sizes)
+        total_storage_text = f"Total Storage Consumed: {total_storage:.2f} MB"
+        
+        # Add total storage text to the plot
+        plt.text(0, -1.5, total_storage_text, ha='center', color=label_color, fontsize=12, fontweight='bold')
 
         plt.tight_layout()
-
-        plot_file = "file_sizes_summary.png"
-        plt.savefig(plot_file, facecolor=fig.get_facecolor())
+        plt.savefig(plot_file, transparent=True)
         plt.close(fig)
 
         return plot_file
+
+
 
     def on_pick_src_click(self, e):
         """Callback for selecting the source directory."""

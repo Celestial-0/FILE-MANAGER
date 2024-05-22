@@ -1,0 +1,23 @@
+INFO:flet_runtime:Assets path configured: D:\Code\Work\File Manager\assets
+INFO:flet_runtime:Starting up TCP server on localhost:52342
+INFO:flet_runtime:Flet app has started...
+INFO:flet_runtime:App URL: tcp://localhost:52342
+INFO:flet_runtime:Starting Flet View app...
+INFO:flet_runtime:Flet View found in: C:\Users\YASH\AppData\Local\Programs\Python\Python312\Lib\site-packages\flet\bin\flet\flet.exe
+INFO:flet_runtime:App session started
+INFO:root:Backup created at: C:\Users\YASH\Downloads\Test\backup_20240522_071858
+INFO:root:Created folder: C:\Users\YASH\Downloads\Test\Music
+INFO:root:Created folder: C:\Users\YASH\Downloads\Test\Photos
+INFO:root:Created folder: C:\Users\YASH\Downloads\Test\Documents
+INFO:root:Created folder: C:\Users\YASH\Downloads\Test\Videos
+INFO:root:Created folder: C:\Users\YASH\Downloads\Test\Others
+INFO:root:Moved file: AI Engineer Roadmap 2024.pdf to C:\Users\YASH\Downloads\Test\Documents
+INFO:root:Moved file: Dark_Aria_-_Solo_Leveling___40_Marimba_Ringtone__41_.mp3 to C:\Users\YASH\Downloads\Test\Music
+INFO:root:Moved file: LinkedIn Checklist.pdf to C:\Users\YASH\Downloads\Test\Documents
+INFO:root:Moved file: Mayuri__x27_s_Tuturu_-_Notification_Tune.mp3 to C:\Users\YASH\Downloads\Test\Music
+INFO:root:Moved file: Resume Checklist.pdf to C:\Users\YASH\Downloads\Test\Documents
+INFO:root:Moved file: test_graph.py to C:\Users\YASH\Downloads\Test\Others
+INFO:root:Moved file: wallpaperflare.com_wallpaper (1).jpg to C:\Users\YASH\Downloads\Test\Photos
+INFO:root:Moved file: wallpaperflare.com_wallpaper.jpg to C:\Users\YASH\Downloads\Test\Photos
+INFO:root:Summarizing files in directory: C:\Users\YASH\Downloads\Test
+INFO:root:File sizes summary: {'.pdf': 4.435461044311523, '.mp3': 1.0634002685546875, '.py': 0.02093505859375, '.jpg': 1.1830711364746094}
