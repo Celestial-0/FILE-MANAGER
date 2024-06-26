@@ -32,22 +32,43 @@ pip install -r requirements.txt
 
 ## Usage
 
-1. **Running the Application**:
+1. **Cloning the Repository**:
+   First, clone the repository using Git:
+
+   ```bash
+   git clone https://github.com/Celestial-0/FILE-MANAGER.git
+   cd FILE-MANAGER
+   ```
+
+2. **Installing Dependencies**:
+   Install the required Python packages:
+
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+3. **Running the Application**:
    To start the application, execute the `project.py` script:
 
    ```bash
    python project.py
    ```
 
-2. **User Interface**:
+4. **User Interface**:
    - **Source Directory**: Select the source directory using the "Select Source Directory" button.
    - **Default Folders**: The application includes default folder names for Music, Photos, Documents, and Videos. These can be customized.
    - **Custom Folders**: Add custom folders by specifying the folder name and associated file extensions.
    - **Organize Files**: Click the "Organize Files" button to start organizing files. The application will create a backup, organize files, and display a summary report.
    - **Summary and Plot**: The summary report is displayed in a text field, and a bar chart representing the summary is shown in an image field.
 
-3. **Logs**:
+5. **Logs**:
    - The application logs its activities in a log file named `file_manager.log`.
+
+### Working and Details
+
+<!-- markdownlint-disable-next-line MD033 -->
+<iframe width="1423" height="621" src="https://www.youtube.com/embed/N5y7jV4f_vg" title="FILE-MANAGER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 
 ## Screenshot of the File Manager Application
 
