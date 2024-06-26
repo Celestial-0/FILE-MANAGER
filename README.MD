@@ -33,10 +33,10 @@ pip install -r requirements.txt
 ## Usage
 
 1. **Running the Application**:
-   To start the application, execute the `main.py` script:
+   To start the application, execute the `project.py` script:
 
    ```bash
-   python main.py
+   python project.py
    ```
 
 2. **User Interface**:
@@ -73,7 +73,7 @@ pip install -r requirements.txt
 
 ## Code Structure
 
-- **main.py**: Contains the main application code including the user interface and file organization logic.
+- **project.py**: Contains the project application code including the user interface and file organization logic.
 - **requirements.txt**: Lists the required Python packages.
 
 ## Key Functions
