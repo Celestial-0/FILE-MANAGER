@@ -67,7 +67,7 @@ pip install -r requirements.txt
 ### Working and Details
 
 <!-- markdownlint-disable-next-line MD033 -->
-<iframe width="1423" height="621" src="https://www.youtube.com/embed/N5y7jV4f_vg" title="FILE-MANAGER" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+<iframe width="1473" height="621" src="https://www.youtube.com/embed/N5y7y4f_V-g" title="FILE-MANAGER 📂📄📈" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ## Screenshot of the File Manager Application
