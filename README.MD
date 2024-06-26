@@ -66,7 +66,7 @@ pip install -r requirements.txt
 
 ### Working and Details
 
-#### Video Demo: ![FILE-MANAGER 📂📄📈](https://youtu.be/N5y7y4f_V-g)
+#### Video Demo: [FILE-MANAGER 📂📄📈](https://youtu.be/N5y7y4f_V-g)
 
 ## Screenshot of the File Manager Application
 
